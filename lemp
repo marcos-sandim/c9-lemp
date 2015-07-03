@@ -14,8 +14,8 @@ case "$1" in
         echo "Starting PHP5..."
         sudo service php5-fpm start
         sleep 1
-        echo "Starting c9 MySQL..."
-        mysql-ctl start
+        echo "Starting PostgreSql..."
+        sudo service postgresql start
         sleep 1
     ;;
     stop)
@@ -25,8 +25,8 @@ case "$1" in
         echo "Stopping PHP5..."
         sudo service php5-fpm stop
         sleep 1
-        echo "Stopping c9 MySQL..."
-        mysql-ctl stop
+        echo "Stopping PostgreSql..."
+        sudo service postgresql stop
         sleep 1
     ;;
     restart)
@@ -36,14 +36,14 @@ case "$1" in
         echo "Restarting PHP5..."
         sudo service php5-fpm restart
         sleep 1
-        echo "Restarting c9 MySQL..."
-        mysql-ctl restart
+        echo "Restarting PostgreSql..."
+        sudo service postgresql restart
         sleep 1
     ;;
     status)
         sudo service nginx status
         sudo service php5-fpm status
-        mysql-ctl status
+        sudo service postgresql status
         exit 0
     ;;
     *)

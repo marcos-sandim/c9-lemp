@@ -37,8 +37,11 @@ sudo sed -i 's/user = www-data/user = ubuntu/g' /etc/php5/fpm/pool.d/www.conf
 sudo sed -i 's/group = www-data/group = ubuntu/g' /etc/php5/fpm/pool.d/www.conf
 sudo sed -i 's/pm = dynamic/pm = ondemand/g' /etc/php5/fpm/pool.d/www.conf # Reduce number of processes..
 
-# MySQL:
-# mysql-ctl install
+sudo apt-add-repository ppa:phalcon/stable
+
+sudo apt-get install nginx postgresql-9.3 postgresql-client php5-fpm php5-phalcon
+
+sudo apt-get purge apache2 mysql-server mysql-client
 
 
 # Install helper
@@ -47,7 +50,7 @@ sudo chmod 755 /usr/bin/lemp
 
 
 # Start the party!
-#mysql-ctl start
+sudo service postgresql start
 sudo service nginx start
 sudo service nginx reload
 sudo service php5-fpm start
@@ -59,4 +62,4 @@ echo Check all services are up.
 sleep 5 # Wait for MySQL server to be fully loaded.
 sudo service nginx status
 sudo service php5-fpm status
-#mysql-ctl status
+sudo service postgresql status
