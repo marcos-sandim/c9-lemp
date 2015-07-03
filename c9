@@ -29,13 +29,10 @@ server {
         client_max_body_size 32M;
 
         # Only one location is needed. The root.
-        location / {
-            # Default: Parameters at the end for rewriting.
-            try_files $uri $uri/ /index.php?$query_string;
-
-            # Query modified for Drupal, althought should work without
-            # this try_files (Note "q" parameter)
-            # try_files $uri $uri/ /index.php?q=$uri&$args;
+        # nginx configuration 
+        location / { 
+            rewrite ^/$ /public/ break; 
+            rewrite ^(.*)$ /public/$1 break; 
         }
 
         location = /favicon.ico { access_log off; log_not_found off; }
