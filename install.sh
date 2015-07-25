@@ -38,6 +38,7 @@ sudo sed -i 's/group = www-data/group = ubuntu/g' /etc/php5/fpm/pool.d/www.conf
 sudo sed -i 's/pm = dynamic/pm = ondemand/g' /etc/php5/fpm/pool.d/www.conf # Reduce number of processes..
 
 sudo apt-add-repository ppa:phalcon/stable
+sudo apt-get update
 
 sudo apt-get install nginx postgresql-9.3 postgresql-client php5-fpm php5-phalcon
 
